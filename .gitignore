@@ -1,0 +1,65 @@
+# Package Files #
+target/**/*.jar
+*.war
+*.class
+
+# gwt caches and compiled units #
+war/gwt_bree/
+gwt-unitCache/
+*/.gwt/
+*/gen*
+app/src/main/webapp/App/
+app/src/main/webapp/WEB-INF/deploy/
+
+# boilerplate generated classes #
+.apt_generated/
+
+# more caches and things from deploy #
+war/WEB-INF/deploy/
+war/WEB-INF/classes/
+
+# maven #
+target/
+
+# intellij generated files #
+*.iml
+*.ipr
+*.iws
+.idea/
+velocity_implicit.vm
+
+# Eclipse generated files #
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+*.ucls
+*.checkstyle
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+# OS X generated files #
+.DS_Store
+
+# Others
+*.log
