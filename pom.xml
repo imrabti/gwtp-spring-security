@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.nuvola</groupId>
     <artifactId>rest-spring-security</artifactId>
+    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -17,7 +18,6 @@
         <spring-security.version>3.2.4.RELEASE</spring-security.version>
         <servlet.version>3.1.0</servlet.version>
         <jackson.version>2.3.1</jackson.version>
-
         <logback.version>1.1.1</logback.version>
         <slf4j.version>1.7.6</slf4j.version>
 
@@ -27,7 +27,6 @@
         <target.jdk>1.7</target.jdk>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <jetty.port>8080</jetty.port>
 
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
     </properties>
