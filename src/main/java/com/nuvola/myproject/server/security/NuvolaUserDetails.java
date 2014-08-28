@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.nuvola.core.shared.model.User;
+import com.nuvola.myproject.shared.model.User;
 
 public class NuvolaUserDetails implements UserDetails {
     private User user;

@@ -4,7 +4,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import com.nuvola.core.shared.model.User;
+import com.nuvola.myproject.shared.model.User;
 
 @Component
 public class LoggedInChecker {

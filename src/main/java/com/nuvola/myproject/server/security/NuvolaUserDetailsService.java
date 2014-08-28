@@ -11,8 +11,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.nuvola.core.server.service.UserService;
-import com.nuvola.core.shared.model.User;
+import com.nuvola.myproject.server.service.UserService;
+import com.nuvola.myproject.shared.model.User;
 
 @Service
 public class NuvolaUserDetailsService implements UserDetailsService {
@@ -30,7 +30,7 @@ public class NuvolaUserDetailsService implements UserDetailsService {
         }
 
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        List<String> permissions = userService.getPermissions(user.getId());
+        List<String> permissions = userService.getPermissions(user.getLogin());
         for (String permission : permissions) {
             grantedAuthorities.add(new SimpleGrantedAuthority(permission));
         }
