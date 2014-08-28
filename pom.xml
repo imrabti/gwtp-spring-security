@@ -10,7 +10,7 @@
 
     <properties>
         <gwt.version>2.6.1</gwt.version>
-        <gwtp.version>1.2.1</gwtp.version>
+        <gwtp.version>1.3.1</gwtp.version>
         <gin.version>2.1.2</gin.version>
         <guice.version>3.0</guice.version>
 
@@ -32,6 +32,42 @@
     </properties>
 
     <dependencies>
+        <!-- Google Web Toolkit dependencies -->
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-user</artifactId>
+            <version>${gwt.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- GWT-Platform dependencies -->
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-mvp-client</artifactId>
+            <version>${gwtp.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.gwtplatform</groupId>
+            <artifactId>gwtp-dispatch-rest</artifactId>
+            <version>${gwtp.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- DI dependencies -->
+        <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-assistedinject</artifactId>
+            <version>${guice.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.gwt.inject</groupId>
+            <artifactId>gin</artifactId>
+            <version>${gin.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -118,6 +154,71 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>${gwt.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>resources</goal>
+                            <goal>compile</goal>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <configuration>
+                    <failOnError>true</failOnError>
+                    <testTimeOut>180</testTimeOut>
+                    <includes>**/*GwtTest.java</includes>
+                    <mode>htmlunit</mode>
+                    <gen>gen</gen>
+
+                    <extraJvmArgs>-Xss1024k -Xmx512M -XX:MaxPermSize=512m</extraJvmArgs>
+                    <logLevel>INFO</logLevel>
+
+                    <copyWebapp>true</copyWebapp>
+                    <hostedWebapp>${webappDirectory}</hostedWebapp>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>sdm</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>gwt-maven-plugin</artifactId>
+
+                        <configuration>
+                            <module>com.nuvola.myproject.SuperDevMode</module>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>devmode</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>gwt-maven-plugin</artifactId>
+
+                        <configuration>
+                            <module>com.nuvola.myproject.DevMode</module>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
