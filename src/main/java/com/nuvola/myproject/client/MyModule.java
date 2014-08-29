@@ -7,14 +7,27 @@ import com.gwtplatform.mvp.client.annotations.UnauthorizedPlace;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
 import com.gwtplatform.mvp.client.proxy.DefaultPlaceManager;
 import com.gwtplatform.mvp.shared.proxy.RouteTokenFormatter;
+import com.nuvola.myproject.client.application.ApplicationModule;
+import com.nuvola.myproject.client.login.LoginModule;
+import com.nuvola.myproject.client.services.ServiceModule;
+import com.nuvola.myproject.client.util.CurrentUser;
 
-public class CoreModule extends AbstractGinModule {
+public class MyModule extends AbstractGinModule {
     @Override
     protected void configure() {
-        install(new DefaultModule(DefaultPlaceManager.class, RouteTokenFormatter.class));
+        install(new DefaultModule.Builder()
+                .placeManager(DefaultPlaceManager.class)
+                .tokenFormatter(RouteTokenFormatter.class)
+                .build());
+
+        bind(CurrentUser.class).asEagerSingleton();
 
         bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.getHome());
         bindConstant().annotatedWith(ErrorPlace.class).to(NameTokens.getHome());
         bindConstant().annotatedWith(UnauthorizedPlace.class).to(NameTokens.getLogin());
+
+        install(new ServiceModule());
+        install(new LoginModule());
+        install(new ApplicationModule());
     }
 }

@@ -8,6 +8,7 @@ import com.gwtplatform.mvp.client.Bootstrapper;
 import com.gwtplatform.mvp.client.annotations.UnauthorizedPlace;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
+import com.nuvola.myproject.client.services.UserService;
 import com.nuvola.myproject.client.util.CurrentUser;
 
 public class BootstrapperImpl implements Bootstrapper {
