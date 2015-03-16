@@ -15,11 +15,11 @@ import com.nuvola.myproject.server.service.UserService;
 import com.nuvola.myproject.shared.model.User;
 
 @Service
-public class NuvolaUserDetailsService implements UserDetailsService {
+public class NuvolaCasDetailsService implements UserDetailsService {
     private final UserService userService;
 
     @Autowired
-    NuvolaUserDetailsService(UserService userService) {
+    NuvolaCasDetailsService(UserService userService) {
         this.userService = userService;
     }
 
@@ -37,4 +37,6 @@ public class NuvolaUserDetailsService implements UserDetailsService {
 
         return new NuvolaUserDetails(user, grantedAuthorities);
     }
+
+
 }

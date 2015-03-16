@@ -5,7 +5,9 @@ import java.util.List;
 import com.nuvola.myproject.shared.model.User;
 
 public interface UserService {
-    User getUserByUsername(String username);
+    // User getCorporateUser(String username);
+
+    User getLocalUserByUsername(String username);
 
     List<String> getPermissions(String username);
 

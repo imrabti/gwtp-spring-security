@@ -4,5 +4,7 @@
         Login : <g:TextBox ui:field="login"/>
         Password : <g:PasswordTextBox ui:field="password"/>
         <g:Button ui:field="submit" text="Login"/>
+        or
+        <g:Button ui:field="casLogin" text="Login with Corporate Account" />
     </g:HTMLPanel>
 </ui:UiBinder>
