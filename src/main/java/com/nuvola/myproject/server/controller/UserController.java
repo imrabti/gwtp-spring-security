@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.nuvola.myproject.server.service.UserService;
 
-import static org.springframework.http.HttpStatus.OK;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-
 import static com.nuvola.myproject.shared.ResourcePaths.User.LOGIN;
 import static com.nuvola.myproject.shared.ResourcePaths.User.ROOT;
+import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
 @RequestMapping(value = ROOT, produces = MediaType.APPLICATION_JSON_VALUE)

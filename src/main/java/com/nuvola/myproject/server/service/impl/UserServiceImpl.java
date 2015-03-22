@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import com.nuvola.myproject.shared.model.User;
 @Service
 public class UserServiceImpl implements UserService {
     private final static String USER_TEST = "root";
+    private final static String USER_CORPORATE_TEST = "client1";
 
     private final LoggedInChecker loggedInChecker;
 
@@ -23,7 +25,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByUsername(String username) {
+    public User getCorporateUser(String username) {
+        // Just a mock interface support only one single root
+        // Here you can add DAO to load user from the database
+        if (username.equals(USER_CORPORATE_TEST)) {
+            User user = new User();
+            user.setLogin(USER_CORPORATE_TEST);
+            user.setPassword(new ShaPasswordEncoder().encodePassword("password", null));
+
+            return user;
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public User getLocalUserByUsername(String username) {
         // Just a mock interface support only one single root
         // Here you can add DAO to load user from the database
         if (username.equals(USER_TEST)) {
