@@ -19,22 +19,16 @@ public class CorporateServiceTemplate extends AbstractOAuth2ApiBinding implement
 
     @Override
     public CorporatePofile getUserProfile() {
-        ResponseEntity<String> content;
-
-        /*HttpHeaders headers = new HttpHeaders();
-        headers.set("Authorization", "Bearer " + accessToken);
-        HttpEntity<String> entity = new HttpEntity<>(headers);*/
-
         try {
-            content = getRestTemplate().exchange(URI.create(corporateProfileURL + accessToken),
+            ResponseEntity<String> content = getRestTemplate().exchange(URI.create(corporateProfileURL + accessToken),
                     HttpMethod.GET, null, String.class);
-        } /*catch (UserRedirectRequiredException e1) {
-            content = restTemplate.exchange(URI.create(profileUrl), HttpMethod.GET, entity, String.class);
-        } */ catch (HttpClientErrorException e2) {
+
+            // TODO Retrieve a Corporate JSON user build a serialized object
+            return new CorporatePofile(content.getBody(),"test@test.com","client1","employee","foo","bar");
+
+        }  catch (HttpClientErrorException e2) {
             throw new OAuth2Exception(e2.getMessage());
         }
-
-        return new CorporatePofile();
     }
 
     @Override

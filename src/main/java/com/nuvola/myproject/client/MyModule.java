@@ -8,7 +8,6 @@ import com.gwtplatform.mvp.client.gin.DefaultModule;
 import com.gwtplatform.mvp.client.proxy.DefaultPlaceManager;
 import com.gwtplatform.mvp.shared.proxy.RouteTokenFormatter;
 import com.nuvola.myproject.client.application.ApplicationModule;
-import com.nuvola.myproject.client.login.LoginModule;
 import com.nuvola.myproject.client.services.ServiceModule;
 import com.nuvola.myproject.client.util.CurrentUser;
 
@@ -24,10 +23,9 @@ public class MyModule extends AbstractGinModule {
 
         bindConstant().annotatedWith(DefaultPlace.class).to(NameTokens.getHome());
         bindConstant().annotatedWith(ErrorPlace.class).to(NameTokens.getHome());
-        bindConstant().annotatedWith(UnauthorizedPlace.class).to(NameTokens.getLogin());
+        bindConstant().annotatedWith(UnauthorizedPlace.class).to(NameTokens.getHome());
 
         install(new ServiceModule());
-        install(new LoginModule());
         install(new ApplicationModule());
     }
 }

@@ -6,16 +6,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.social.security.SocialUserDetails;
+import org.springframework.social.security.SocialUserDetailsService;
 import org.springframework.stereotype.Service;
 
 import com.nuvola.myproject.server.service.UserService;
 import com.nuvola.myproject.shared.model.User;
 
 @Service
-public class NuvolaCasDetailsService implements UserDetailsService {
+public class NuvolaCasDetailsService implements SocialUserDetailsService {
     private final UserService userService;
 
     @Autowired
@@ -23,8 +23,8 @@ public class NuvolaCasDetailsService implements UserDetailsService {
         this.userService = userService;
     }
 
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userService.getLocalUserByUsername(username);
+    public SocialUserDetails loadUserByUserId(String username) throws UsernameNotFoundException {
+        User user = userService.getCorporateUser(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
@@ -35,7 +35,7 @@ public class NuvolaCasDetailsService implements UserDetailsService {
             grantedAuthorities.add(new SimpleGrantedAuthority(permission));
         }
 
-        return new NuvolaUserDetails(user, grantedAuthorities);
+        return new NuvolaCasUserDetails(user, grantedAuthorities);
     }
 
 

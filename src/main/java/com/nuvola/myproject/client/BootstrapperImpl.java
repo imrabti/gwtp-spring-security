@@ -2,12 +2,13 @@ package com.nuvola.myproject.client;
 
 import javax.inject.Inject;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.Bootstrapper;
 import com.gwtplatform.mvp.client.annotations.UnauthorizedPlace;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
-import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.nuvola.myproject.client.services.UserService;
 import com.nuvola.myproject.client.util.CurrentUser;
 
@@ -56,7 +57,11 @@ public class BootstrapperImpl implements Bootstrapper {
         if (isCurrentUserLoggedIn) {
             placeManager.revealCurrentPlace();
         } else {
-            placeManager.revealPlace(new PlaceRequest.Builder().nameToken(unauthorizedPlace).build());
+            gotoLogin();
         }
+    }
+
+    private void gotoLogin() {
+        Window.open(GWT.getHostPageBaseURL() + "access/login", "_self", null);
     }
 }

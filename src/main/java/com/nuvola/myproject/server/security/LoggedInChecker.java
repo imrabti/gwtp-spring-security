@@ -17,7 +17,12 @@ public class LoggedInChecker {
 
             // principal can be "anonymousUser" (String)
             if (principal instanceof NuvolaUserDetails) {
+                // Local authenticated user
                 NuvolaUserDetails userDetails = (NuvolaUserDetails) principal;
+                user = userDetails.getUser();
+            } else if (principal instanceof NuvolaCasUserDetails) {
+                // Corporate authenticated user
+                NuvolaCasUserDetails userDetails = (NuvolaCasUserDetails) principal;
                 user = userDetails.getUser();
             }
         }

@@ -8,10 +8,11 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 import com.gwtplatform.dispatch.rest.shared.RestAction;
+
 import static com.nuvola.myproject.shared.Parameters.PASSWORD;
 import static com.nuvola.myproject.shared.Parameters.USERNAME;
-import static com.nuvola.myproject.shared.ResourcePaths.User.ROOT;
 import static com.nuvola.myproject.shared.ResourcePaths.User.LOGIN;
+import static com.nuvola.myproject.shared.ResourcePaths.User.ROOT;
 import static javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED;
 
 @Path(ROOT)

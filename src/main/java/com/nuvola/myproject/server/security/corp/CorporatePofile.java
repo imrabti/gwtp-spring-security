@@ -8,6 +8,18 @@ public class CorporatePofile {
     private String firstName;
     private String lastName;
 
+    public CorporatePofile() {
+    }
+
+    public CorporatePofile(String id, String email, String username, String name, String firstName, String lastName) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public String getId() {
         return id;
     }
