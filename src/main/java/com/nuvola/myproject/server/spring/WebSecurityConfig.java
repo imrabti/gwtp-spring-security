@@ -2,12 +2,14 @@ package com.nuvola.myproject.server.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -24,8 +26,10 @@ import com.nuvola.myproject.shared.ResourcePaths;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private static final String LOGIN_PATH = ResourcePaths.ROOT + ResourcePaths.User.ROOT + ResourcePaths.User.LOGIN;
+@EnableGlobalMethodSecurity(securedEnabled = true)
+@ComponentScan(value = "com.nuvola.**.security")
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    private static final String LOGIN_PATH = ResourcePaths.User.ROOT + ResourcePaths.User.LOGIN;
 
     @Autowired
     private NuvolaUserDetailsService userDetailsService;

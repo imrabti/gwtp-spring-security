@@ -1,0 +1,4 @@
+application:
+  name: my-project
+  name-formated: My Project
+  version: 1.0Alpha

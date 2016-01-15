@@ -5,7 +5,6 @@ import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.inject.Provides;
 import com.gwtplatform.dispatch.rest.client.RestApplicationPath;
 import com.gwtplatform.dispatch.rest.client.gin.RestDispatchAsyncModule;
-import com.nuvola.myproject.shared.ResourcePaths;
 
 public class ServiceModule extends AbstractGinModule {
     @Override
@@ -21,6 +20,6 @@ public class ServiceModule extends AbstractGinModule {
             baseUrl = baseUrl.substring(0, baseUrl.length() - 1);
         }
 
-        return baseUrl + ResourcePaths.ROOT;
+        return baseUrl;
     }
 }
