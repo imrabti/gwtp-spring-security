@@ -43,6 +43,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getCurrentUser() {
+        return loggedInChecker.getLoggedInUser();
+    }
+
+    @Override
     public Boolean isCurrentUserLoggedIn() {
         return loggedInChecker.getLoggedInUser() != null;
     }
