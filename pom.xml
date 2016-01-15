@@ -25,11 +25,11 @@
         <!--Plugin versions-->
         <maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
 
-        <target.jdk>1.7</target.jdk>
+        <!-- Project build settings -->
+        <java.version>1.7</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+        <staticResourcesDirectory>${project.build.outputDirectory}/static</staticResourcesDirectory>
     </properties>
 
     <dependencies>
@@ -94,8 +94,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${target.jdk}</source>
-                    <target>${target.jdk}</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
@@ -115,19 +115,18 @@
                 </executions>
 
                 <configuration>
+                    <module>com.nuvola.myproject.MyProject</module>
                     <failOnError>true</failOnError>
                     <testTimeOut>180</testTimeOut>
                     <includes>**/*GwtTest.java</includes>
                     <mode>htmlunit</mode>
                     <gen>gen</gen>
-
                     <extraJvmArgs>-Xss1024k -Xmx512M</extraJvmArgs>
                     <logLevel>INFO</logLevel>
-
-                    <copyWebapp>true</copyWebapp>
-                    <hostedWebapp>${webappDirectory}</hostedWebapp>
-
-                    <module>com.nuvola.myproject.MyProject</module>
+                    <gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
+                    <inplace>false</inplace>
+                    <outputDirectory>${staticResourcesDirectory}</outputDirectory>
+                    <sourceLevel>${java.version}</sourceLevel>
                 </configuration>
             </plugin>
 
