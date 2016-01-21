@@ -1,4 +1,4 @@
-package com.nuvola.myproject.client.util;
+package com.nuvola.myproject.client.security;
 
 public class CurrentUser {
     private boolean loggedIn;

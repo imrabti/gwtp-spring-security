@@ -3,13 +3,13 @@ package com.nuvola.myproject.client;
 import javax.inject.Inject;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.gwtplatform.dispatch.rest.shared.RestDispatch;
+import com.gwtplatform.dispatch.rest.client.RestDispatch;
 import com.gwtplatform.mvp.client.Bootstrapper;
 import com.gwtplatform.mvp.client.annotations.UnauthorizedPlace;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.nuvola.myproject.client.services.UserService;
-import com.nuvola.myproject.client.util.CurrentUser;
+import com.nuvola.myproject.client.security.CurrentUser;
 
 public class BootstrapperImpl implements Bootstrapper {
     private final String unauthorizedPlace;

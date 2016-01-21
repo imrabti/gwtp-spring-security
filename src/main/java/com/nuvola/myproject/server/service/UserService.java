@@ -9,5 +9,7 @@ public interface UserService {
 
     List<String> getPermissions(String username);
 
+    User getCurrentUser();
+
     Boolean isCurrentUserLoggedIn();
 }

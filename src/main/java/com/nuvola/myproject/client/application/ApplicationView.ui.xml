@@ -2,6 +2,8 @@
              xmlns:g='urn:import:com.google.gwt.user.client.ui'>
 
     <g:HTMLPanel>
+        <g:Label ui:field="welcomeLabel"/>
+        <g:Button ui:field="logout" text="Logout"/>
         This is the home Page, you are logged in.
     </g:HTMLPanel>
 </ui:UiBinder>

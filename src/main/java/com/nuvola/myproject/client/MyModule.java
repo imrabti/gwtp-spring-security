@@ -10,7 +10,7 @@ import com.gwtplatform.mvp.shared.proxy.RouteTokenFormatter;
 import com.nuvola.myproject.client.application.ApplicationModule;
 import com.nuvola.myproject.client.login.LoginModule;
 import com.nuvola.myproject.client.services.ServiceModule;
-import com.nuvola.myproject.client.util.CurrentUser;
+import com.nuvola.myproject.client.security.CurrentUser;
 
 public class MyModule extends AbstractGinModule {
     @Override

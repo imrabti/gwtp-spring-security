@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nuvola.myproject.server.service.UserService;
+import com.nuvola.myproject.shared.model.User;
 
 import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.ResponseEntity.ok;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import static com.nuvola.myproject.shared.ResourcePaths.User.LOGIN;
@@ -30,5 +32,10 @@ public class UserController {
     @PermitAll
     ResponseEntity<Boolean> isCurrentUserLoggedIn() {
         return new ResponseEntity<>(userService.isCurrentUserLoggedIn(), OK);
+    }
+
+    @RequestMapping(method = GET)
+    ResponseEntity<User> getCurrentUser() {
+        return ok(userService.getCurrentUser());
     }
 }
