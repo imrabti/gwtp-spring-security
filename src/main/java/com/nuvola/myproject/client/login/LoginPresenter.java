@@ -19,7 +19,7 @@ import com.nuvola.myproject.client.NameTokens;
 import com.nuvola.myproject.client.login.LoginPresenter.MyProxy;
 import com.nuvola.myproject.client.login.LoginPresenter.MyView;
 import com.nuvola.myproject.client.services.UserService;
-import com.nuvola.myproject.client.util.CurrentUser;
+import com.nuvola.myproject.client.security.CurrentUser;
 
 public class LoginPresenter extends Presenter<MyView, MyProxy> implements LoginUiHandlers {
     interface MyView extends View, HasUiHandlers<LoginUiHandlers> {

@@ -17,6 +17,7 @@ import com.gwtplatform.mvp.shared.proxy.PlaceRequest;
 import com.nuvola.myproject.client.NameTokens;
 import com.nuvola.myproject.client.application.ApplicationPresenter.MyProxy;
 import com.nuvola.myproject.client.application.ApplicationPresenter.MyView;
+import com.nuvola.myproject.client.security.CurrentUser;
 import com.nuvola.myproject.client.services.UserService;
 import com.nuvola.myproject.shared.model.User;
 
@@ -32,6 +33,7 @@ public class ApplicationPresenter extends Presenter<MyView, MyProxy> implements 
 
     private final RestDispatch dispatch;
     private final UserService userService;
+    private final CurrentUser currentUser;
     private final PlaceManager placeManager;
 
     @Inject
@@ -40,11 +42,13 @@ public class ApplicationPresenter extends Presenter<MyView, MyProxy> implements 
                          MyProxy proxy,
                          RestDispatch dispatch,
                          UserService userService,
+                         CurrentUser currentUser,
                          PlaceManager placeManager) {
         super(eventBus, view, proxy, RevealType.Root);
 
         this.dispatch = dispatch;
         this.userService = userService;
+        this.currentUser = currentUser;
         this.placeManager = placeManager;
 
         getView().setUiHandlers(this);
@@ -63,6 +67,7 @@ public class ApplicationPresenter extends Presenter<MyView, MyProxy> implements 
                 PlaceRequest placeRequest = new PlaceRequest.Builder()
                         .nameToken(NameTokens.getLogin())
                         .build();
+                currentUser.setLoggedIn(false);
                 placeManager.revealPlace(placeRequest);
             }
         });
